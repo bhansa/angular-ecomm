@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col bg-dark text-white">
+      <a class="navbar-brand">Online Store</a>
+    </div>
+  </div>
+
+  <div *ngIf="orderSent" class="m-2 text-center">
+    <img
+      src="https://livingroomtoballroom.com/wp-content/uploads/2019/10/payment_successful.gif"
+      alt="Order successful image"
+    />
+    <div class="text-center">
+      <h1 class="display-3">Thank You!</h1>
+      <p class="lead">
+        <strong>Please check your email</strong> for further instructions.
+      </p>
+      <hr />
+      <p>Having trouble? <a href="">Contact us</a></p>
+      <p class="lead">
+        <a class="btn btn-warning btn-sm" role="button" routerLink="/"
+          >Continue to homepage</a
+        >
+      </p>
+    </div>
+  </div>
+
+  <form
+    *ngIf="!orderSent"
+    #form="ngForm"
+    novalidate
+    (ngSubmit)="submitOrder(form)"
+    class="m-2"
+  >
+    <div class="form-group">
+      <label>Name</label>
+      <input
+        class="form-control"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="order.name"
+        required
+      />
+      <span *ngIf="submitted && name.invalid" class="text-danger">
+        Please Enter your name
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input
+        class="form-control"
+        name="address"
+        #address="ngModel"
+        [(ngModel)]="order.address"
+        required
+      />
+      <span *ngIf="submitted && address.invalid" class="text-danger">
+        Please Enter your address
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input
+        class="form-control"
+        name="city"
+        #city="ngModel"
+        [(ngModel)]="order.city"
+        required
+      />
+      <span *ngIf="submitted && city.invalid" class="text-danger">
+        Please Enter your city
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Country</label>
+      <input
+        class="form-control"
+        name="country"
+        #country="ngModel"
+        [(ngModel)]="order.country"
+        required
+      />
+      <span *ngIf="submitted && country.invalid" class="text-danger">
+        Please Enter your country
+      </span>
+    </div>
+
+    <!-- submit button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-warning m-1">
+        Place order
+      </button>
+      <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
+    </div>
+  </form>
+</div>

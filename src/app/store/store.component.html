@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <!-- header -->
+  <div class="row header">
+    <div class="col">
+      <a href="/" class="navbar-brand">Online Store</a>
+    </div>
+    <app-cartsummary></app-cartsummary>
+  </div>
+</div>
+<div class="container">
+  <h4>Select categories</h4>
+  <!-- category div -->
+  <div class="row">
+    <div class="col p-2">
+      <button class="btn btn btn-outline-dark m-1" (click)="changeCategory()">
+        Home
+      </button>
+      <button
+        *ngFor="let cat of categories"
+        class="btn btn btn-outline-dark m-1"
+        (click)="changeCategory(cat)"
+      >
+        {{ cat }}
+      </button>
+
+      <button class="btn btn-block btn-danger mt-3" routerLink="/admin">
+        Admin
+      </button>
+    </div>
+  </div>
+
+  <h4>Select products</h4>
+  <div class="row">
+    <!-- product list -->
+    <figure
+      class="col-3 card card-product m-2"
+      *ngFor="let product of products"
+    >
+      <figcaption class="info-wrap">
+        <h6 class="title text-dots">
+          <a href="#">{{ product.name }}</a>
+          <p>{{ product.description }}</p>
+        </h6>
+        <div class="action-wrap">
+          <button
+            type="button"
+            class="btn btn-warning btn-sm float-right"
+            (click)="addProductToCart(product)"
+          >
+            Add to cart
+          </button>
+          <div class="price-wrap h5">
+            <span class="price-new">{{ product.price | currency: "INR" }}</span>
+          </div>
+          <!-- price-wrap.// -->
+        </div>
+        <!-- action-wrap -->
+      </figcaption>
+    </figure>
+    <!-- card // -->
+  </div>
+</div>
+
+<!-- Pagination -->
+
+<div class="text-center">
+  <div class="form-inline mr-2">
+    <select
+      class="form-control"
+      [value]="productsPerPage"
+      (change)="changePageSize($event.target.value)"
+    >
+      <option value="4">Four Products</option>
+      <option value="6">Six Products</option>
+      <option value="8">Eight Products</option>
+    </select>
+  </div>
+
+  <div class="btn-group">
+    <button
+      *ngFor="let page of pageNumbers"
+      (click)="changePage(page)"
+      class="btn btn-outline-dark"
+      [class.active]="page === selectedPage"
+    >
+      {{ page }}
+    </button>
+  </div>
+</div>
