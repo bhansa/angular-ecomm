@@ -1,2 +1,0 @@
-- name: S3 site action
-  uses: erangeles/s3-site-action@v1.0
