@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { StaticDatasource } from "./static.datasource";
 import { Injectable } from "@angular/core";
 @Injectable()
-export class OrderRepositry {
+export class OrderRepository {
   private order: Order[] = [];
   constructor(private staticDatasource: StaticDatasource) {}
   getOrders(): Order[] {

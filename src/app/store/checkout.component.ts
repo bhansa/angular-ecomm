@@ -1,5 +1,5 @@
 import { Order } from "./order.model";
-import { OrderRepositry } from "./../../Model/order.repository";
+import { OrderRepository } from "./../../Model/order.repository";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
@@ -20,7 +20,7 @@ import { NgForm } from "@angular/forms";
 export class CheckoutComponent implements OnInit {
   orderSent = false;
   submitted = false;
-  constructor(public orderRepositry: OrderRepositry, public order: Order) {}
+  constructor(public orderRepositry: OrderRepository, public order: Order) {}
 
   ngOnInit(): void {}
 
